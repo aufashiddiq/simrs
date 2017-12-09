@@ -1,0 +1,17 @@
+RewriteEngine on
+
+RewriteRule ^home$ index.php?page=home [L]
+RewriteRule ^daftar-obat$ index.php?page=daftar-obat [L]
+RewriteRule ^obat$ index.php?page=obat [L]
+RewriteRule ^insert-obat$ index.php?page=insert-obat [L]
+RewriteRule ^input-obat$ index.php?page=input-obat [L]
+RewriteRule ^tambah-stok$ index.php?page=tambah-stok [L]
+RewriteRule ^input-obat-pasien$ index.php?page=input-obat-pasien [L]
+RewriteRule ^rekap-obat-masuk$ index.php?page=rekap-obat-masuk [L]
+RewriteRule ^rekap-obat-keluar$ index.php?page=rekap-obat-keluar [L]
+RewriteRule ^rekap-penjualan$ index.php?page=rekap-penjualan [L]
+RewriteRule ^logout$ index.php?page=logout [L]
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^/?([A-Za-z]+)/?$ salah.php?id=$1 [L]
+</IfModule>

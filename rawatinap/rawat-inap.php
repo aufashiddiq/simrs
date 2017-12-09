@@ -1,0 +1,1 @@
+<h2>Pasien Rawat Inap</h2>

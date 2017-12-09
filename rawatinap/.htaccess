@@ -1,0 +1,14 @@
+RewriteEngine on
+
+RewriteRule ^home$ index.php?page=home [L]
+RewriteRule ^rawat-inap$ index.php?page=rawat-inap [L]
+RewriteRule ^jenis-ruangan$ index.php?page=jenis-ruangan [L]
+RewriteRule ^daftar-ruangan$ index.php?page=daftar-ruangan [L]
+RewriteRule ^input-ruangan$ index.php?page=input-ruangan [L]
+RewriteRule ^rekam-medik$ index.php?page=rekam-medik [L]
+RewriteRule ^rekap-rawat-inap$ index.php?page=rekap-rawat-inap [L]
+RewriteRule ^logout$ index.php?page=logout [L]
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^/?([A-Za-z]+)/?$ salah.php?id=$1 [L]
+</IfModule>

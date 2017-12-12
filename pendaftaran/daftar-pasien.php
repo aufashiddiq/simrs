@@ -17,7 +17,7 @@
 </thead>
 <tbody>
 <?php
-    $data  = file_get_contents('http://'.IP.'/api/pasien/list');
+    $data  = file_get_contents('http://'.IP.'/pasien/list');
     $array = json_decode($data, true);
     $data  = $array['data'];
 ?>

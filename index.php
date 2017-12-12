@@ -50,7 +50,7 @@ if(isset($_SESSION['level'])) {
     <?php
         if(isset($_POST['username']))
         {
-            $url = 'http://192.168.43.64/api/login';
+            $url = 'http://sapipermaiga.000webhostapp.com/login';
             
             $data['username']   = $_POST['username'];
             $data['password']   = $_POST['password'];

@@ -18,7 +18,7 @@
         </thead>
         <tbody>
            <?php
-                $data  = file_get_contents('http://192.168.43.64/api/daftar/obat');
+                $data  = file_get_contents(ip.'/daftar/obat');
                 $array = json_decode($data, true);
                 $data  = $array['data'];
                 //var_dump($data);

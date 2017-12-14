@@ -11,6 +11,10 @@ if (isset($_GET['page'])) {
 		include("daftar-ruangan.php");
 	}else if($halaman=="input-ruangan"){
 		include("input-ruangan.php");
+	}else if($halaman=="tambah-ruang"){
+		include("tambah-ruang.php");
+	}else if($halaman=="tambah-rawat"){
+		include("tambah-rawat.php");
 	}else if($halaman=="rekam-medik"){
 		include("rekam-medik.php");
 	}else if($halaman=="rekap-rawat-inap"){

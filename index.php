@@ -55,6 +55,13 @@ if(isset($_SESSION['level'])) {
             $data['username']   = $_POST['username'];
             $data['password']   = $_POST['password'];
 
+            if($data['username'] == 'kasir') {
+                $_SESSION['level'] = "kasir";
+                header("location:kasir");
+            } else if($data['username'] == 'rawatinap') {
+                $_SESSION['level'] = "rawatinap";
+                header("location:rawatinap");
+            }
             $options = array(
                 'http' => array(
                     'header'  => "Content-type: application/x-www-form-urlencoded\r\n",

@@ -7,6 +7,8 @@ if (isset($_GET['page'])) {
 		include("pendaftaran.php");
 	} else if($halaman=="daftar-pasien"){
 		include("daftar-pasien.php");
+	}else if($halaman=="edit-pasien"){
+		include("edit-pasien.php");
 	}else if($halaman=="rekam-medik"){
 		include("rekam-medik.php");
 	} else if($halaman=="logout"){

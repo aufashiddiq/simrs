@@ -1,36 +1,36 @@
 <h2>Jenis Ruangan</h2>
 <br>
 <br>
+<a href="index.php?page=tambah-ruang" class="btn btn-primary">Tambah Jenis Ruangan</a>
+<br>
 <table class="table table-dark">
 <thead>
     <tr>
+    <th scope="col">No</th>
     <th scope="col">Jenis Ruangan</th>
     <th scope="col">Harga</th>
-    <th scope="col">Aksi</th>
     </tr>
 </thead>
 <tbody>
 
 <?php
-$shop = array( array("1"=>"a", "2"=>"b", "3"=>"c"));
+    $data  = file_get_contents('http://'.IP.'/ruangan/list');
+    $array = json_decode($data, true);
+    $data  = $array['data'];
+    $i = 1;
 ?>
-    <?php if (count($shop) > 0): ?>
-        <?php foreach ($shop as $row): array_map('htmlentities', $row); ?>
+    <?php if (count($data) > 0): ?>
+        <?php foreach ($data as $row): array_map('htmlentities', $row); ?>
         <tr>
-        <td><?php echo implode('</td><td>', $row); ?></td>
-        
+        <td><?php echo $i++; ?></td>
+        <td><?php echo $row['jenisRuangan']; ?></td>
+        <td><?php echo $row['hargaRuangan']; ?></td>
+        </tr>
         <?php endforeach; ?>
 
 
     <?php endif; ?>
 
-    <td>
-<button type="button" class="btn btn-info" onclick="javascript: window.location.href='edit_jenis_poli.php?kode=<?php echo $result['id_jenis_poli']?>';">Edit</button>
-<button type="button" class="btn btn-danger" onclick="javascript: if(confirm('Apakah Anda Yakin ingin Menghapus?') 
-== true){ window.location.href='delete_jenis_poli.php?kode=<?php echo $result['id_poli'];?>';}">
-Delete </button>
-</td>
-</tr>
 </tbody>
 
 

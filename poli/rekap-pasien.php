@@ -4,8 +4,8 @@
 <table class="table table-dark">
 <thead>
     <tr>
-    <th scope="col">Id Poli</th>
-    <th scope="col">Id Pasien</th>
+    <th scope="col">No</th>
+    <th scope="col">Nama Pasien</th>
     <th scope="col">Keluhan</th>
     <th scope="col">Jenis Poli</th>
     <th scope="col">Status</th>
@@ -15,15 +15,23 @@
 </thead>
 <tbody>
 <?php
-    $data  = file_get_contents('http://localhost/api/poli/list');
+    $data  = file_get_contents('http://'.IP.'/poli/list');
     $array = json_decode($data, true);
     $data  = $array['data'];
+    $i = 1;
 ?>
 <?php if (count($data) > 0): ?>
         <?php foreach ($data as $row): array_map('htmlentities', $row); ?>
-    <tr>
-        <td><?php echo implode('</td><td>', $row); ?></td>
-    </tr>
+        <tr>
+        <td><?php echo $i++; ?></td>
+        <td><?php echo $row['idPasien']; ?></td>
+        <td><?php echo $row['keluhan']; ?></td>
+        <td><?php echo $row['jenisPoli']; ?></td>
+        <td><?php echo $row['status']; ?></td>
+        <td><?php echo $row['penyakit']; ?></td>
+        <td><?php echo $row['catatanMedisPoli']; ?></td>
+        
+        </tr>
     <?php endforeach; ?>
 
 

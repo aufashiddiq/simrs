@@ -1,6 +1,6 @@
 <?php
     if (isset($_GET['idObat'])) {
-          $url = 'http://192.168.43.64/api/obat/delete';
+          $url = ip.'/obat/delete';
           $data['idObat']=$_GET['idObat'];
           $options = array(
                 'http' => array(
@@ -36,7 +36,7 @@
         </thead>
         <tbody>
            <?php
-                $data  = file_get_contents('http://192.168.43.64/api/obat/list');
+                $data  = file_get_contents(ip.'/obat/list');
                 $array = json_decode($data, true);
                 $data  = $array['data'];
                 //var_dump($data);

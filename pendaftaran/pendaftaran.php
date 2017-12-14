@@ -3,28 +3,24 @@
 <div class="col-md-8">
 	<form action="#" method="post">
 		<div class="form-group">
-			<label>ID Pasien</label>
-			<input name="idPasien" type="text" placeholder="gunakan saat update saja" class="form-control">
-		</div>
-		<div class="form-group">
 			<label>Nomor Rekam Medik</label>
 			<input name="nomorRekamMedik" type="text" class="form-control">
 		</div>
 		<div class="form-group">
 			<label>Nama Pasien</label>
-			<input name="namaPasien" type="text" class="form-control">
+			<input name="namaPasien" type="text" class="form-control" required>
 		</div>
 		<div class="form-group">
 			<label>Tgl Lahir Pasien</label>
-			<input name="tglLahir" type="text" class="form-control" placeholder="dd-mm-yyyy">
+			<input name="tglLahir" type="text" class="form-control" placeholder="dd-mm-yyyy" required>
 		</div>
 		<div class="form-group">
 			<label>Jenis Kelamin Pasien</label>
-			<input name="jenisKelamin" type="text" class="form-control" placeholder="Laki-laki/Perempuan">
+			<input name="jenisKelamin" type="text" class="form-control" placeholder="Laki-laki/Perempuan" required>
 		</div>
         <div class="form-group">
 			<label>Alamat Pasien</label>
-			<input name="alamatPasien" type="text" class="form-control">
+			<input name="alamatPasien" type="text" class="form-control" required>
 		</div>
         <div class="form-group">
 			<label>Agama Pasien</label>
@@ -45,42 +41,38 @@
 		</div>																	
 	</form>
 	<?php
-            
-		if(isset($_POST['idPasien']))
-		{
-			$url = 'http://localhost/api/pasien/sign-up';
-			
-			if($_POST['idPasien'] !== "")
-			{
-				$data['idPasien']   = $_POST['idPasien'];    
+            if(isset($_POST['namaPasien'])) {
+				$url = 'http://'.IP.'/pasien/sign-up';
+				
+	
+				$data['nomorRekamMedik']   = $_POST['nomorRekamMedik'];
+				$data['namaPasien']   = $_POST['namaPasien'];
+				$data['tglLahirPasien']    = $_POST['tglLahir'];
+				$data['jenisKelaminPasien']  = $_POST['jenisKelamin'];
+				$data['alamatPasien']     = $_POST['alamatPasien'];
+				$data['agamaPasien']   = $_POST['agamaPasien'];
+				$data['keteranganPasien']  = $_POST['keteranganPasien'];
+				$data['dalamPerawatan'] = $_POST['dalamPerawatan'];
+	
+				// use key 'http' even if you send the request to https://...
+				$options = array(
+					'http' => array(
+						'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+						'method'  => 'POST',
+						'content' => http_build_query($data)
+					)
+				);
+				
+				$context  = stream_context_create($options);
+				
+				$result = file_get_contents($url, false, $context);
+				if ($result === FALSE) { /* Handle error */ }
+				
+				echo $result;
+				header("location:index.php?page=daftar-pasien");
 			}
-
-			$data['nomorRekamMedik']   = $_POST['nomorRekamMedik'];
-			$data['namaPasien']   = $_POST['namaPasien'];
-			$data['tglLahirPasien']    = $_POST['tglLahir'];
-			$data['jenisKelaminPasien']  = $_POST['jenisKelamin'];
-			$data['alamatPasien']     = $_POST['alamatPasien'];
-			$data['agamaPasien']   = $_POST['agamaPasien'];
-			$data['keteranganPasien']  = $_POST['keteranganPasien'];
-			$data['dalamPerawatan'] = $_POST['dalamPerawatan'];
-
-			// use key 'http' even if you send the request to https://...
-			$options = array(
-				'http' => array(
-					'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-					'method'  => 'POST',
-					'content' => http_build_query($data)
-				)
-			);
+		
 			
-			$context  = stream_context_create($options);
-			
-			$result = file_get_contents($url, false, $context);
-			if ($result === FALSE) { /* Handle error */ }
-			
-			echo $result;
-			
-		}
 	?>
 
 

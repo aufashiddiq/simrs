@@ -1,10 +1,10 @@
 <?php
 session_start();
-
+define('ip', "http://sapipermaiga.000webhostapp.com");
+// define('ip', "http://192.168.43.64/api");
 if(!isset($_SESSION['level']) or $_SESSION['level'] != "apotek") {
     header("location:../index.php");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -44,9 +44,7 @@ if(!isset($_SESSION['level']) or $_SESSION['level'] != "apotek") {
       <li><a href="input-obat"><span class="glyphicon glyphicon-th-list"></span>  Input Obat Baru</a></li><br>
       <li><a href="tambah-stok"><span class="glyphicon glyphicon-th-list"></span>  Tambah Stok</a></li><br>
       <li><a href="input-obat-pasien"><span class="glyphicon glyphicon-th-list"></span>  Input Obat Pasien</a></li><br>
-      <li><a href="rekap-obat-masuk"><span class="glyphicon glyphicon-th-list"></span>  Rekap Obat Masuk</a></li><br>
-      <li><a href="rekap-obat-keluar"><span class="glyphicon glyphicon-th-list"></span>  Rekap Obat Keluar</a></li><br>
-      <li><a href="rekap-penjualan"><span class="glyphicon glyphicon-th-list"></span>  Rekap Penjualan</a></li><br>
+      <li><a href="rekap-obat-keluar"><span class="glyphicon glyphicon-th-list"></span>  Daftar Obat Keluar</a></li><br>
       <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li><br>      
     </ul>
     </div>

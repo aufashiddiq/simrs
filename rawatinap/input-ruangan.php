@@ -3,16 +3,21 @@
 <br>
 <div class="col-md-8">
     <form name="form" method="post">
-        <div class="form-group">
-            <!-- <form action="" method="post" select name="jenisRuangan" id="jenisRuangan" class="form-control" placeholder="Jenis Ruangan" tabindex="3"> -->
-    
-	<form action="" method="post"><select name="jenis_ruangan" class="form-control">   
-	<option value="">Silahkan Pilih</option>
-	<option value="Mawar">Ruang Mawar</option>  
-	<option value="Melati">Ruang Melati</option>  
-	<option value="Anggrek">Ruang Anggrek</option>  
-	<option value="Bugenvil">Ruang Bugenvil</option>  
-	</select>   
+    <div class="form-group">
+        <label>Nama Pasien</label>
+        <select style='margin:4px 0px 9px 0px' name="idRuangan" class='form-control'>
+        <option value='0' selected>&nbsp; &nbsp; - &nbsp; &nbsp; Pilih Jenis Ruangan &nbsp; &nbsp; - &nbsp; &nbsp;</option>
+        <?php
+            $data  = file_get_contents('http://'.IP.'/ruangan/list');
+            $array = json_decode($data, true);
+            $data  = $array['data'];
+        ?>
+        <?php if (count($data) > 0): ?>
+            <?php foreach ($data as $row): array_map('htmlentities', $row); ?>
+            <option value=<?php echo $row['idRuangan']; ?>><?php echo $row['jenisRuangan']; ?></option>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        </select>
     </div>
 	
 	<div class="form-group">
@@ -20,10 +25,10 @@
         </div>
 		
         <div class="form-group">
-            <input type="text" name="hargaRuangan" id="hargaRuangan" class="form-control" placeholder="Harga" tabindex="3">
+            <input type="text" name="statusRuangan" id="statusRuangan" class="form-control" placeholder="Status" tabindex="3">
         </div>
 
-                <div class="row">
+        <div class="row">
             <div class="col-xs-12 col-md-6"><input type="submit" value="Submit" a href="rekap_pasien.php" class="btn btn-primary btn-block" tabindex="7"></div>
         </div>
         
@@ -32,21 +37,12 @@
 
 <?php
 
-if(isset($_POST['idPasien']))
+if(isset($_POST['nomorRuangan']))
 {
-    $url = 'http://localhost/api/poli/tambah';
-    
-    if($_POST['idPoli'] !== "")
-    {
-        $data['idPoli']   = $_POST['idPoli'];    
-    }
-
-    $data['idPasien']   = $_POST['idPasien'];
-    $data['keluhan']    = $_POST['keluhan'];
-    $data['jenisPoli']  = $_POST['jenisPoli'];
-    $data['status']     = $_POST['status'];
-    $data['penyakit']   = $_POST['penyakit'];
-    $data['catatanMedisPoli']  = $_POST['catatanMedisPoli'];
+    $url = 'http://'.IP.'/no/ruangan/tambah';
+    $data['idRuangan']   = $_POST['idRuangan'];
+    $data['nomorRuangan']   = $_POST['nomorRuangan'];
+    $data['statusRuangan']    = $_POST['statusRuangan'];
 
     // use key 'http' even if you send the request to https://...
     $options = array(
@@ -63,6 +59,6 @@ if(isset($_POST['idPasien']))
     if ($result === FALSE) { /* Handle error */ }
     
     echo $result;
-    
+    header("location:index.php?page=daftar-ruangan");
 }
 ?>

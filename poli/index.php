@@ -1,9 +1,11 @@
 <?php
-// session_start();
 
-// if(!isset($_SESSION['level']) or $_SESSION['level'] != "poli") {
-//     header("location:../index.php");
-// }
+define("IP", 'sapipermaiga.000webhostapp.com');
+session_start();
+
+if(!isset($_SESSION['level']) or $_SESSION['level'] != "poli") {
+    header("location:../index.php");
+}
 ?>
 
 <!DOCTYPE html>

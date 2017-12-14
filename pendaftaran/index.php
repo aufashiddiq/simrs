@@ -43,7 +43,7 @@ if(!isset($_SESSION['level']) or $_SESSION['level'] != "pendaftaran") {
       <li><a href="home"><span class="glyphicon glyphicon-home"></span>  HOME</a></li><br>
       <li><a href="pendaftaran"><span class="glyphicon glyphicon-th-list"></span>  Pendaftaran</a></li><br>
       <li><a href="daftar-pasien"><span class="glyphicon glyphicon-user"></span>  Daftar Pasien</a></li><br>
-      <li><a href="rekam-medik"><span class="glyphicon glyphicon-user"></span>  Rekam Medik</a></li><br>
+      <!-- <li><a href="rekam-medik"><span class="glyphicon glyphicon-user"></span>  Rekam Medik</a></li><br> -->
       <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li><br>      
     </ul>
     </div>

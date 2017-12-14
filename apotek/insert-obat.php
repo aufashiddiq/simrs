@@ -1,6 +1,6 @@
 <?php
     if(isset($_GET['idObat'])){
-    	$data  = file_get_contents('http://192.168.43.64/api/obat?idObat='.$_GET['idObat']);
+    	$data  = file_get_contents(ip.'/obat?idObat='.$_GET['idObat']);
         $array = json_decode($data, true);
         $data  = $array['data'];
     }	
@@ -8,10 +8,10 @@
 		if(isset($_POST['kodeObat']))
 		{
 			if($_POST['idObat']!=""){
-				$url = 'http://192.168.43.64/api/obat/edit';
+				$url = ip.'/obat/edit';
 				$data['idObat']=$_POST['idObat'];
 			}else{
-				$url = 'http://192.168.43.64/api/obat/tambah';
+				$url = ip.'/obat/tambah';
 			}	
 			
 			if($_POST['kodeObat'] !== "")

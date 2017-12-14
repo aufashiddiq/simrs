@@ -14,6 +14,10 @@ if (isset($_GET['page'])) {
 		include("rekap-pasien.php");
 	} else if($halaman=="rekam-medik"){
 		include("rekam-medik.php");
+	} else if($halaman=="edit-pasien"){
+		include("edit-pasien.php");
+	} else if($halaman=="tambah-jenis-poli"){
+		include("tambah-jenis-poli.php");
 	} else if($halaman=="laporan-diagnosa"){
 		include("laporan-diagnosa.php");
 	} else if($halaman=="logout"){

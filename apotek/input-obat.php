@@ -5,7 +5,7 @@
 				$url = 'http://192.168.43.64/api/daftar/obat/edit';
 				$data['idObat']=$_POST['idObat'];
 			}else{*/
-				$url = 'http://192.168.43.64/api/daftar/obat/tambah';
+				$url = ip.'/daftar/obat/tambah';
 			//}	
 			
 			if($_POST['kodeObat'] !== "")
@@ -44,7 +44,20 @@
 		</div>
 		<div class="form-group">
 			<label>Kode Obat</label>
-			<input name="kodeObat" type="text" class="form-control">
+			<select style='margin:4px 0px 9px 0px' name="kodeObat" class='form-control'>
+            <option value='0' selected>&nbsp; &nbsp; - &nbsp; &nbsp; Pilih Obat &nbsp; &nbsp; - &nbsp; &nbsp;</option>
+                            <?php
+                                $data  = file_get_contents(ip.'/obat/list');
+                                $array = json_decode($data, true);
+                                $data  = $array['data'];
+                                // foreach ($data as $row): array_map('htmlentities', $row){
+                               foreach($data as $row){
+                            ?>
+							<option value=<?php echo $row['kodeObat']?>><?php echo $row['kodeObat']?></option>
+                            <?php
+                               }
+                            ?>
+			</select>
 		</div>
         <div class="form-group">
 			<label>Tgl Kadaluarsa</label>
